@@ -11,7 +11,7 @@ for i in range(1, 21):
 
     print("Processing page: {0} \n".format(i))
     url_get = requests.get(main_url.format(i))
-    html_soup = BeautifulSoup(url_get.content, 'html5lib')
+    html_soup = BeautifulSoup(url_get.content, 'lxml')
 
     movie_list = html_soup.select('.lister-item')
 
@@ -35,7 +35,7 @@ for i in range(1, 21):
         print(u"Processing {0}: {1}".format(movie_count, movie_dict["title"]))
         
         url_get = requests.get(movie_dict["url"])
-        html_soup = BeautifulSoup(url_get.content, 'html5lib')
+        html_soup = BeautifulSoup(url_get.content, 'lxml')
         
         data = html_soup.select('.plot_summary')[0]
 
